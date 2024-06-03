@@ -11,22 +11,50 @@ namespace ItemsControlMVVM.Commands
 {
     public class ButtonCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        //public event EventHandler? CanExecuteChanged;
+
+        private readonly MainViewModel vm;
 
         public ButtonCommand(MainViewModel mvm)
         {
+            vm = mvm;
 
         }
         public bool CanExecute(object? parameter)
         {
-            return true;
-            //throw new NotImplementedException();
+            if (vm._productViewModels.Count >= 1)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void Execute(object? parameter)
         {
-            MessageBox.Show("Holy Crap");
-            //throw new NotImplementedException();
+            //MessageBox.Show("CLEAR");
+            vm._productViewModels.Clear();
+            //CommandManager.InvalidateRequerySuggested();
         }
+
+
+        public event EventHandler CanExecuteChanged
+        {
+
+            add
+            {
+
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+
+                CommandManager.RequerySuggested -= value;
+            }
+        }
+
+
+
+
     }
 }

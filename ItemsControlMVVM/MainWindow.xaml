@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Background="OrangeRed"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}"
-        Title="MainWindow" Height="450" Width="800" IsEnabled="False">
+        Title="MainWindow" Height="450" Width="800" IsEnabled="True">
 
     <Window.DataContext>
         <viewmodels:MainViewModel x:Name="ProductsAlias" />
@@ -44,7 +44,7 @@
         </ItemsControl>
 
 
-        <Button Grid.Row="2" Content="Clear All" Command="{Binding ButtonCommand}" />
+        <Button Grid.Row="2" Panel.ZIndex="10" Content="Clear All" Command="{Binding ButtonCommand}" Cursor="Hand"/>
 
 
     </Grid>
