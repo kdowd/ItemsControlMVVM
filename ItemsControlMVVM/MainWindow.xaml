@@ -11,6 +11,13 @@
         Background="OrangeRed"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel, IsDesignTimeCreatable=True}"
         Title="MainWindow" Height="450" Width="800" IsEnabled="True">
+    <Window.Resources>
+        <Style TargetType="Button" >
+
+            <Setter Property="Padding"  Value="5" />
+            <Setter Property="MinWidth" Value="80" />
+        </Style>
+    </Window.Resources>
 
     <Window.DataContext>
         <viewmodels:MainViewModel x:Name="ProductsAlias" />
@@ -43,8 +50,13 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
 
+        <WrapPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="LeftToRight">
+            <Button  Panel.ZIndex="10" Content="Add Item" Command="{Binding AddItem}" Cursor="Hand"/>
+            <Line Margin="5 0" />
+            <Button  Panel.ZIndex="10" Content="Clear All" Command="{Binding ButtonCommand}" Cursor="Hand"/>
 
-        <Button Grid.Row="2" Panel.ZIndex="10" Content="Clear All" Command="{Binding ButtonCommand}" Cursor="Hand"/>
+        </WrapPanel>
+
 
 
     </Grid>

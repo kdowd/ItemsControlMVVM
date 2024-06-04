@@ -20,12 +20,14 @@ namespace ItemsControlMVVM.ViewModels
         // IEnumerable implemented y all collections in C# eg list, need to iterate entire Enumerable to get length/count
         public IEnumerable<ProductViewModel> TheProductViewModels => _productViewModels;
         public ICommand ButtonCommand { get; }
-
+        public ICommand AddItem { get; }
 
 
         public MainViewModel()
         {
             ButtonCommand = new ButtonCommand(this);
+            AddItem = new AddItem(this);
+
 
             _productViewModels = new ObservableCollection<ProductViewModel>
             {
@@ -37,6 +39,13 @@ namespace ItemsControlMVVM.ViewModels
             };
 
 
+
+        }
+
+
+        public void AddNewItem()
+        {
+            _productViewModels.Add(new("Plaid Shirt", "really good stuff", 299.5));
 
         }
 
